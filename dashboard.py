@@ -20,12 +20,12 @@ st.sidebar.header("System Controls")
 st.sidebar.info(f"System Mode: {status}")
 
 if st.sidebar.button("🚨 EMERGENCY KILL SWITCH", type="primary"):
-    st.sidebar.error("KILL COMMAND SENT: All positions flattening...")
+    st.sidebar.error("KILL COMMAND SENT: Flattening all positions...")
 
-# Compliance Lot Input
-lots_input = st.sidebar.number_input("Select Lots", min_value=1, max_value=9)
+# Compliance Lot Input (Guardrail: Max 9 Lots)
+lots_input = st.sidebar.number_input("Select Lots", min_value=1, max_value=9, value=1)
 if lots_input > 9:
-    st.sidebar.error("Compliance Error: Max 9 lots.")
+    st.sidebar.error("Compliance Error: Max 9 lots allowed.")
 
 st.sidebar.markdown("---")
 
