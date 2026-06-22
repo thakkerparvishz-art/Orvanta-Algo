@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orvanta Algo - Master Specification</title>
+    <style>
+        body { 
+            font-family: 'Courier New', Courier, monospace; 
+            background-color: #0d1117; 
+            color: #58a6ff; 
+            padding: 20px; 
+            line-height: 1.6; 
+        }
+        .container { 
+            max-width: 850px; 
+            margin: 0 auto; 
+            background: #161b22; 
+            padding: 30px; 
+            border-radius: 8px; 
+            border: 1px solid #30363d; 
+            box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+        }
+        h1 { 
+            color: #ffffff; 
+            text-align: center; 
+            border-bottom: 2px solid #238636; 
+            padding-bottom: 15px;
+            font-family: sans-serif;
+        }
+        pre { 
+            white-space: pre-wrap; 
+            word-wrap: break-word; 
+            color: #c9d1d9; 
+            background: #0d1117;
+            padding: 15px;
+            border-radius: 5px;
+            border: 1px solid #21262d;
+        }
+        .highlight {
+            color: #2ea44f;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>ORVANTA ALGO PORTAL</h1>
+        <pre>
+======================================================================
+                  ORVANTA ALGO - MASTER PLATFORM SPECIFICATION
+======================================================================
+
+1. SYSTEM TIMING & EXECUTION MATRIX (STRICT)
+----------------------------------------------------------------------
+- 09:15 AM : System connects to WebSocket data feeds. Trading is LOCKED.
+- 09:16 AM : Entry execution window OPENS. Strategy logic begins processing.
+- 03:15 PM : Hard stop & absolute square-off. Cancel all pending limit 
+             orders and immediately fire market orders to flatten all positions.
+- No new trades can be generated under any condition after 03:15 PM.
+
+2. QUANTITY & RISK GUARDRAILS
+----------------------------------------------------------------------
+- Maximum position sizing per client profile is strictly capped at 9 LOTS.
+- The user interface and backend API validator must hard-block any manual 
+  or automated input of 10 lots or more.
+- Admin Panel features a Master Global Kill Switch to instantly halt and 
+  square off all active clients simultaneously during a broker/market crisis.
+
+3. COMPLIANCE & CLEAN CLIENT ONBOARDING
+----------------------------------------------------------------------
+- Step 1: PAN Verification against the central Income Tax database to lock name.
+- Step 2: Aadhaar e-KYC integration via a secure DigiLocker web-view redirect.
+- Step 3: Direct Bank Account validation via automated ₹1.00 Penny Drop check.
+- NOTE: All sub-broker associations and commission-tracking modules are 
+  completely removed. The platform operates Direct-to-Client exclusively.
+- All actions, edits, and error codes are stored in an Immutable Audit Log.
+
+4. THE 12 CORE STRATEGIES (6-POINT CODE-HIDDEN SUMMARIES)
+----------------------------------------------------------------------
+
+STRATEGY 1: THE SHORT STRADDLE
+- Where it works: Trades exclusively in highly liquid index options like Nifty and Bank Nifty.
+- When it works: Activates and deploys precisely at 9:16 AM after morning volatility settles.
+- How it enters: Simultaneously sells one At-The-Money Call option and one At-The-Money Put option.
+- How it manages risk: Monitored every millisecond with a strict, automatic 35% stop-loss per leg.
+- When it profits: Makes maximum gains on calm, sideways market days within a tight price range.
+- How it closes: Cancels open orders and triggers a mandatory market square-off at 3:15 PM sharp.
+
+STRATEGY 2: THE IRON CONDOR
+- Where it works: Runs on major index option chains to take advantage of range-bound price behavior.
+- When it works: Checks execution entry setups starting at 9:16 AM on permitted trading days.
+- How it enters: Sells out-of-the-money options while buying further out-of-the-money options as a hedge.
+- How it manages risk: Risk is naturally limited by protective outer legs, backed by a 25% short leg stop-loss.
+- When it profits: Generates consistent returns as long as the market settles within broad safety boundaries.
+- How it closes: Terminates active tracking states and flattens all four legs cleanly at 3:15 PM.
+
+STRATEGY 3: THE DIRECTIONAL SHORT STRANGLE
+- Where it works: Targets active index options contracts when a clear morning trend is forming.
+- When it works: Execution window triggers at 9:16 AM, evaluating immediate momentum changes.
+- How it enters: Sells asymmetrical Call and Put options spaced further apart based on market pressure.
+- How it manages risk: Relies on an unhedged 40% protective stop-loss to give positions breathing room.
+- When it profits: Builds rapid daily gains when the underlying index drifts smoothly in one direction.
+- How it closes: Kills the tracking module and enforces an absolute market exit at 3:15 PM sharp.
+
+STRATEGY 4: THE OUT-OF-THE-MONEY (OTM) SHORT STRANGLE
+- Where it works: Targets major index option chains by writing contracts further away from market price.
+- When it works: Execution engine monitors premium levels and deploys positions at 9:16 AM.
+- How it enters: Simultaneously sells a safe, out-of-the-money Call option and an out-of-the-money Put option.
+- How it manages risk: Individual legs are protected by an automated 40% stop-loss to guard against breakouts.
+- When it profits: Yields optimal returns on steady, range-bound days when the index stays within short strikes.
+- How it closes: Terminates active tracking states and flattens both legs cleanly at 3:15 PM sharp.
+
+STRATEGY 5: THE BEAR CALL SPREAD
+- Where it works: Trades liquid index options when the market displays a clear downward or sideways bias.
+- When it works: Setup activates at 9:16 AM, analyzing morning resistance levels right after the open.
+- How it enters: Sells an in-the-money/at-the-money Call and buys a higher out-of-the-money Call as a hedge.
+- How it manages risk: Risk is capped by the long protective Call leg, backed by a 25% stop-loss on the short leg.
+- When it profits: Generates consistent returns if the index falls, moves sideways, or rises slightly.
+- How it closes: Clears all pending orders and forces a complete market exit for both legs at 3:15 PM.
+
+STRATEGY 6: THE BULL PUT SPREAD
+- Where it works: Deployed on underlying index option chains that exhibit an upward or flat trend.
+- When it works: Initiates tracking and calculates premium safety thresholds starting precisely at 9:16 AM.
+- How it enters: Sells a high-premium Put option while purchasing a lower-priced Put option further down.
+- How it manages risk: Maximum potential loss is locked at entry, supported by a strict 25% stop-loss on the short leg.
+- When it profits: Reaches max profitability if the index rises or moves sideways, keeping options out-of-the-money.
+- How it closes: Automatically triggers market orders to square off all open positions cleanly at 3:15 PM sharp.
+
+STRATEGY 7: THE SHORT STRADDLE WITH TRAILING STOP
+- Where it works: Trades highly liquid index options when the daily volatility index (VIX) is stable.
+- When it works: Execution window opens at 9:16 AM to establish positions after the opening imbalance clears.
+- How it enters: Simultaneously sells one at-the-money Call and one at-the-money Put to collect decay.
+- How it manages risk: Uses a dual system featuring a 35% fixed stop-loss per leg and a dynamic trailing trigger.
+- When it profits: Builds rapid intraday gains when the market remains quiet and sideways throughout core hours.
+- How it closes: Terminates active tracking and fires a hard square-off command to flatten positions at 3:15 PM.
+
+STRATEGY 8: THE CALENDAR CALL SPREAD
+- Where it works: Utilizes time differentials by trading across two distinct options expiry cycles.
+- When it works: Backend engine calculates time-decay spreads and executes entry parameters at 9:16 AM.
+- How it enters: Sells a near-term weekly expiry Call and simultaneously buys a longer-term monthly expiry Call.
+- How it manages risk: The longer contract acts as an absolute capital buffer, backed by a 20% short contract stop-loss.
+- When it profits: Thrives when the near-term contract melts down rapidly while the long-term contract retains value.
+- How it closes: Overrides active holding states and executes a hard square-off order at 3:15 PM sharp.
+
+STRATEGY 9: THE LONG IRON BUTTERFLY
+- Where it works: Operates within index options to capture premium decay inside a highly targeted zone.
+- When it works: System processes market liquidity data and initiates the trade setup at 9:16 AM.
+- How it enters: Sells at-the-money options while buying further out-of-the-money options symmetrically.
+- How it manages risk: Outer wings define the maximum risk boundary, supplemented by a 25% short-leg protection filter.
+- When it profits: Yields high efficiency when the market pinpoints or closes very close to the center short strikes.
+- How it closes: Kills the trade loop and closes all four legs simultaneously using market orders at 3:15 PM.
+
+STRATEGY 10: THE MULTI-LEG OPTION STRANGLE HEDGE
+- Where it works: Deployed on index choices to take advantage of broad, unbreached market channels.
+- When it works: Begins scanning underlying price behavior at 9:16 AM, filtering out highly erratic noise.
+- How it enters: Writes asymmetric, wide-boundary Call and Put positions based on historical levels.
+- How it manages risk: Enforces a firm 40% protective stop-loss per leg to prevent unexpected afternoon trends.
+- When it profits: Scales smoothly as long as the market drifts quietly inside broad premium safety zones.
+- How it closes: Cancels remaining pending exchange orders and flattens the book at 3:15 PM sharp.
+
+STRATEGY 11: THE RATIO CALL SPREAD
+- Where it works: Targets index options when a mild upward drift or consolidation pattern is forecasted.
+- When it works: Entry calculations initiate at 9:16 AM once the exchange open-interest feed stabilizes.
+- How it enters: Purchases one at-the-money Call option and simultaneously sells two higher out-of-the-money Calls.
+- How it manages risk: Short positions are governed by a strict 30% leg stop-loss to defend against upward spikes.
+- When it profits: Generates peak returns if the underlying index rises precisely to the strike of the short options.
+- How it closes: Terminates active contract parameters and enforces an absolute market exit at 3:15 PM.
+
+STRATEGY 12: THE RATIO PUT SPREAD
+- Where it works: Runs on liquid index option chains when a slight downward drift or flat bias is expected.
+- When it works: Checks execution eligibility parameters starting exactly at 9:16 AM on scheduled days.
+- How it enters: Buys one at-the-money Put option and simultaneously sells two lower out-of-the-money Puts.
+- How it manages risk: Net short exposure is capped and protected by an automated 30% stop-loss on written premiums.
+- When it profits: Yields high returns when the market drifts lower smoothly and settles right at the short Put strikes.
+- How it closes: Halts execution algorithms and flattens all legs via market orders at 3:15 PM sharp.
+======================================================================
+        </pre>
+    </div>
+</body>
+</html>
