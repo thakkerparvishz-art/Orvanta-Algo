@@ -1,14 +1,21 @@
-# Python environment files
+# Python environment and cache
 __pycache__/
 *.py[cod]
 *$py.class
-
-# Environment variables (Crucial for security!)
+.venv/
+env/
+venv/
 .env
 
-# GitHub Codespaces / VS Code specific
+# VS Code and Codespaces settings
 .vscode/
 .DS_Store
 
-# Streamlit/Log files
+# Streamlit and logs
 *.log
+*.sqlite
+debug.log
+
+# Temporary system files
+*~
+.tmp/
