@@ -1,4 +1,4 @@
-# Python environment and cache
+# Python environment files
 __pycache__/
 *.py[cod]
 *$py.class
@@ -7,15 +7,15 @@ env/
 venv/
 .env
 
-# VS Code and Codespaces settings
+# VS Code and Codespaces
 .vscode/
 .DS_Store
 
-# Streamlit and logs
+# Streamlit and Logs
 *.log
 *.sqlite
 debug.log
 
-# Temporary system files
+# Temporary files
 *~
 .tmp/
