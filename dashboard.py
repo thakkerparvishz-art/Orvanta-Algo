@@ -52,3 +52,21 @@ with col2:
 st.markdown("### Recent Audit Logs")
 st.text("09:16:01 - Strategy 1 Initialized")
 st.text("09:16:05 - WebSocket Feed Locked")
+import streamlit as st
+
+st.title("Orvanta Algo Dashboard")
+
+# --- Client Login Section ---
+st.sidebar.header("Client Login")
+user_id = st.sidebar.text_input("User ID")
+password = st.sidebar.text_input("Password", type="password")
+if st.sidebar.button("Login"):
+    st.sidebar.success("Logged in!")
+
+# --- Strategy List ---
+st.subheader("Strategy Selection")
+strategies = ["Short Straddle", "Iron Condor", "Ratio Spread"]
+selected_strategy = st.selectbox("Choose a Strategy", strategies)
+
+if st.button("Activate Strategy"):
+    st.write(f"Executing {selected_strategy}...")
