@@ -5,68 +5,39 @@ import datetime
 # --- Page Configuration ---
 st.set_page_config(page_title="Orvanta Algo Dashboard", layout="wide")
 
-# --- Timing Logic ---
-now = datetime.datetime.now().time()
-market_open = datetime.time(9, 16)
-market_close = datetime.time(15, 15)
-status = "TRADING ENABLED" if market_open <= now <= market_close else "LOCKED"
-
 # --- Header ---
 st.title("🚀 Orvanta Algo Trading Dashboard")
-st.markdown("---")
 
-# --- Sidebar Controls ---
-st.sidebar.header("System Controls")
-st.sidebar.info(f"System Mode: {status}")
+# --- Sidebar: Authentication ---
+st.sidebar.header("Client Login")
+user_id = st.sidebar.text_input("User ID")
+password = st.sidebar.text_input("Password", type="password")
 
-if st.sidebar.button("🚨 EMERGENCY KILL SWITCH", type="primary"):
-    st.sidebar.error("KILL COMMAND SENT: Flattening all positions...")
-
-# Compliance Lot Input (Guardrail: Max 9 Lots)
-lots_input = st.sidebar.number_input("Select Lots", min_value=1, max_value=9, value=1)
-if lots_input > 9:
-    st.sidebar.error("Compliance Error: Max 9 lots allowed.")
+if st.sidebar.button("Login"):
+    st.sidebar.success(f"Welcome, {user_id}!")
 
 st.sidebar.markdown("---")
+
+# --- Sidebar: Strategy Selection ---
+st.sidebar.header("Strategy Selection")
+strategies = ["Short Straddle", "Iron Condor", "Ratio Spread"]
+selected_strategy = st.sidebar.selectbox("Choose a Strategy", strategies)
+
+if st.sidebar.button("Activate Strategy"):
+    st.sidebar.write(f"Executing {selected_strategy}...")
 
 # --- Main Dashboard Area ---
 col1, col2 = st.columns(2)
 
 with col1:
-    st.subheader("Active Strategies")
-    data = {
-        "Strategy": ["Short Straddle", "Iron Condor", "Ratio Put Spread"],
-        "Lots": [5, 2, 9],
-        "Status": ["Running", "Running", "Inactive"]
+    st.subheader("System Status")
+    status_data = {
+        "Metric": ["WebSocket", "Latency", "Compliance"],
+        "Value": ["Connected", "12ms", "9-Lot Limit"]
     }
-    df = pd.DataFrame(data)
-    st.table(df)
+    st.table(pd.DataFrame(status_data))
 
 with col2:
-    st.subheader("System Health")
-    st.write("WebSocket Connection: ✅ Connected")
-    st.write("API Latency: 12ms")
-    st.write(f"Last Sync: {datetime.datetime.now().strftime('%H:%M:%S')}")
-
-# --- Footer/Logs ---
-st.markdown("### Recent Audit Logs")
-st.text("09:16:01 - Strategy 1 Initialized")
-st.text("09:16:05 - WebSocket Feed Locked")
-import streamlit as st
-
-st.title("Orvanta Algo Dashboard")
-
-# --- Client Login Section ---
-st.sidebar.header("Client Login")
-user_id = st.sidebar.text_input("User ID")
-password = st.sidebar.text_input("Password", type="password")
-if st.sidebar.button("Login"):
-    st.sidebar.success("Logged in!")
-
-# --- Strategy List ---
-st.subheader("Strategy Selection")
-strategies = ["Short Straddle", "Iron Condor", "Ratio Spread"]
-selected_strategy = st.selectbox("Choose a Strategy", strategies)
-
-if st.button("Activate Strategy"):
-    st.write(f"Executing {selected_strategy}...")
+    st.subheader("Live Market")
+    st.write(f"System Time: {datetime.datetime.now().strftime('%H:%M:%S')}")
+    st.info("System Mode: TRADING ENABLED")
