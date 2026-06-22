@@ -1,14 +1,14 @@
 # Python environment files
 __pycache__/
-*.pyc
-venv/
+*.py[cod]
+*$py.class
+
+# Environment variables (Crucial for security!)
 .env
 
-# Secrets and Keys
-*.key
-*.pem
-*.secret
-
-# System files
+# GitHub Codespaces / VS Code specific
+.vscode/
 .DS_Store
-Thumbs.db
+
+# Streamlit/Log files
+*.log
