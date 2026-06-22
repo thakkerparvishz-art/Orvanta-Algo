@@ -42,3 +42,15 @@ with col2:
 st.markdown("### Recent Audit Logs")
 st.text("09:16:01 - Strategy 1 Initialized")
 st.text("09:16:05 - WebSocket Feed Locked")
+# Add this where you allow users to set lot sizes
+lots_input = st.number_input("Select Lots", min_value=1, max_value=9)
+if lots_input > 9:
+    st.error("Compliance Error: Maximum 9 lots allowed.")now = datetime.datetime.now().time()
+market_open = datetime.time(9, 16)
+market_close = datetime.time(15, 15)
+
+if market_open <= now <= market_close:
+    status = "TRADING ENABLED"
+else:
+    status = "LOCKED"
+st.sidebar.info(f"System Mode: {status}")
